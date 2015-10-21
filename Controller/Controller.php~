@@ -1,0 +1,9 @@
+<?php
+class Controller
+{
+  function 	view($name, $data)
+  {
+    $v = new View($name);
+    $v->render($data);
+  }
+}

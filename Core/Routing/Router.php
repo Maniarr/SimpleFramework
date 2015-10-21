@@ -1,13 +1,15 @@
 <?php
 
-function      __autoload($class)
+function	 __autoload($class)
 {
-  require_once($class.'.php');
+  if (strpos($class, 'Controller') == -1)
+    require_once($class.'.php');
+  else
+    require_once('/Users/marzi_n/Documents/router/'.$class.'.php');
 }
 
 class Router
 {
-
   public 	$routes;
 
   function 	__construct()

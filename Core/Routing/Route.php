@@ -3,12 +3,16 @@
 class Route
 {
   public 	$url;
-  public 	$function;
+  private 	$class;
+  private	$method;
 
   function 	Route($url, $function)
   {
+    $tmp = explode('::', $function);
+
     $this->url = $url;
-    $this->function = $function;
+    $this->class = $tmp[0];
+    $this->method = $tmp[1];
   }
 
   function	equal_url($url)
@@ -39,7 +43,7 @@ class Route
     $response = array();
     $original = explode('/', $this->url);
     $tmp = explode('/', $url);
-    var_dump($url);
+
     for ($i = 0; $i < count($original); $i++)
     {
       if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
@@ -49,9 +53,10 @@ class Route
     return ($response);
   }
 
-  )
+  function 	call($url)
   {
-    $this->get_params($url);
-    call_user_func_array($this->function, $this->get_params($url));
+    $class = new ReflectionClass($this->class);
+    $object = $class->newInstanceArgs();
+    call_user_func_array(array($object, $this->method), $this->get_params($url));
   }
 }
