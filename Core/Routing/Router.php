@@ -5,7 +5,7 @@ function	 __autoload($class)
   if (strpos($class, 'Controller') == -1)
     require_once($class.'.php');
   else
-    require_once('/Users/marzi_n/Documents/router/'.$class.'.php');
+    require_once(realpath('Controller'.DIRECTORY_SEPARATOR.$class.'.php'));
 }
 
 class Router
