@@ -18,19 +18,23 @@ class Route
   function	equal_url($url)
   {
     $original = explode('/', $this->url);
+
+    if ($url[strlen($url) - 1] == '/')
+        $url = substr($url, 0, -1);
+
     $tmp = explode('/', $url);
 
     for ($i = 0; $i < count($original); $i++)
     {
-      if (isset($original[$i]) && isset($tmp[$i]) && ($original[$i] != $tmp[$i]))
+      if (isset($original[$i]) && isset($tmp[$i]) && ($original[$i] != $tmp[$i]) )
       {
-	if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
-	{
-	  if ($tmp[$i] == false)
-	    return (0);
-	}
-	else
-	  return (0);
+    	if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
+    	{
+    	  if ($tmp[$i] == false)
+    	    return (0);
+    	}
+    	else
+    	  return (0);
       }
     }
     if (count($tmp) != count($original))
