@@ -22,7 +22,7 @@ class Route
 
     for ($i = 0; $i < count($original); $i++)
     {
-      if ($original[$i] != $tmp[$i])
+      if (isset($original[$i]) && isset($tmp[$i]) && ($original[$i] != $tmp[$i]))
       {
 	if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
 	{

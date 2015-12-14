@@ -6,7 +6,7 @@ class View
 
   function View($name)
   {
-    $this->path = "/Users/marzi_n/Documents/router/View/".$name.".php";
+    $this->path = BASE_PATH."View/".$name.".php";
   }
 
   function render($data = null)
