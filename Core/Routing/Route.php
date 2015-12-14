@@ -6,7 +6,7 @@ class Route
   private 	$class;
   private	$method;
 
-  function 	Route($url, $function)
+  function 	__construct($url, $function)
   {
     $tmp = explode('::', $function);
 

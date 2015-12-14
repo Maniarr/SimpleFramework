@@ -9,7 +9,7 @@ Autoload::load($load);
 
 $router = new Router();
 
-$router->add_route("/{name}", "TestController::hello");
-$router->add_route("/info/{str}", "TestController::info");
+$router->get("/{name}", "TestController::hello");
+$router->get("/info/{str}", "TestController::info");
 
 $router->run();
