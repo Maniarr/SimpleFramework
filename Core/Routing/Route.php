@@ -19,7 +19,7 @@ class Route
   {
     $original = explode('/', $this->url);
 
-    if ($url[strlen($url) - 1] == '/')
+    if (strlen($url) > 1 && $url[strlen($url) - 1] == '/')
         $url = substr($url, 0, -1);
 
     $tmp = explode('/', $url);
