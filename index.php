@@ -9,7 +9,8 @@ Autoload::load($load);
 
 $router = new Router();
 
-$router->get("/{name}", "TestController::hello");
-$router->get("/info/{str}", "TestController::info");
+$router->get('/', 'PageController::index');
+
+$router->add_404('PageController::route_404');
 
 $router->run();
