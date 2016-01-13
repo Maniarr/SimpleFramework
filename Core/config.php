@@ -5,9 +5,10 @@ define('BASE_URL', str_replace('/index.php', '',$_SERVER['SCRIPT_NAME']));
 define('URL', 'http://'.$_SERVER['HTTP_HOST'].''.str_replace('index.php', '',$_SERVER['SCRIPT_NAME']));
 
 $load = array(
-  "Route"  	=> "Core\Routing\Route",
-  "Router" 	=> "Core\Routing\Router",
-  "View"	=> "Core\View",
-  "Controller"  => "Controller\Controller"
+  "Route"  	    => "Core\Routing\Route",
+  "Router" 	    => "Core\Routing\Router",
+  "View"      	=> "Core\View",
+  "Controller"  => "Controller\Controller",
+  "Database"    => "Core\Database"
 );
 ?>
