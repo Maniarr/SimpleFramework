@@ -4,14 +4,14 @@ class Database
 {
   private $db;
 
-  private function __construct()
+  function __construct()
   {
     $credentials = array(
       'host'     => 'localhost',
       'port'     => 3306,
       'dbname'   => 'simpleframework',
-      'username' => 'root',
-      'password' => '',
+      'username' => 'zoidberg',
+      'password' => 'password',
     );
 
     $this->db = $this->connect($credentials);
@@ -22,6 +22,7 @@ class Database
     try
     {
         $database = new PDO('mysql:host='.$credentials['host'].';port='.$credentials['port'].';dbname='.$credentials['dbname'], $credentials['username'], $credentials['password']);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e)
     {
@@ -36,4 +37,4 @@ class Database
   {
     return ($this->db);
   }
-)
+}

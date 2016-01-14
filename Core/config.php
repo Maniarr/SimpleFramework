@@ -9,6 +9,7 @@ $load = array(
   "Router" 	    => "Core\Routing\Router",
   "View"      	=> "Core\View",
   "Controller"  => "Controller\Controller",
-  "Database"    => "Core\Database"
+  "Database"    => "Core\Database",
+  "Model"       => "Model\Model"
 );
 ?>

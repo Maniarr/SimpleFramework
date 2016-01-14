@@ -2,7 +2,7 @@
 
 namespace Core\Config;
 
-trait 	Autoload
+trait Autoload
 {
   function load($load)
   {

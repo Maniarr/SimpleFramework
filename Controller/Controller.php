@@ -2,18 +2,15 @@
 
 class Controller
 {
-  public $db;
+  function model($name)
+  {
+    $model_class = new ReflectionClass($name);
+    $model = $model_class->newInstanceArgs(array($name));
 
-  function  __construct() {
-      $host     = 'localhost';
-      $port     = 3306;
-      $dbname   = 'simpleframework';
-      $username = 'root';
-      $password = '';
-      $this->db = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$dbname, $username, $password);
+    return ($model);
   }
 
-  function 	view($name, $data = null)
+  function view($name, $data = null)
   {
     $v = new View($name);
     $v->render($data);

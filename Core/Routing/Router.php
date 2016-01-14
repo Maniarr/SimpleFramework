@@ -2,10 +2,10 @@
 
 function	 __autoload($class)
 {
-  if (strpos($class, 'Controller') == -1)
-    require_once($class.'.php');
+  if (strpos($class, 'Controller'))
+    require_once(realpath('Controller'.DS.$class.'.php'));
   else
-    require_once(realpath('Controller'.DIRECTORY_SEPARATOR.$class.'.php'));
+    require_once(realpath('Model'.DS.$class.'.php'));
 }
 
 class Router

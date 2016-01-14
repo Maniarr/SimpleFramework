@@ -4,11 +4,14 @@ class Model
 {
   public $request;
   public $table_name;
+  public $db;
 
   function __construct($table_name)
   {
     $this->request = '';
-    $this->table_name = $table_name;
+    $this->table_name = strtolower($table_name);
+
+    $this->db = (new Database())->get_db();
   }
 
   /* PRIMARY METHOD */
@@ -118,33 +121,38 @@ class Model
 
   public function fetch()
   {
-    $host     = 'localhost';
-    $port     = 3306;
-    $dbname   = 'simpleframework';
-    $username = 'root';
-    $password = '';
-    $db = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$dbname, $username, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $result = '';
 
     try
     {
-      $req = $db->prepare($this->request);
+      $req = $this->db->prepare($this->request);
       $req->execute();
-      $result = $req->fetch();
+      return ($req->fetch());
     }
     catch (PDOException $e)
     {
       echo 'SQL Error : '.$e->getMessage();
-      return;
     }
+
+    return (false);
   }
 
+  public function fetchAll()
+  {
+
+    try
+    {
+      $req = $this->db->prepare($this->request);
+      $req->execute();
+      return ($req->fetchAll());
+    }
+    catch (PDOException $e)
+    {
+      echo 'SQL Error : '.$e->getMessage();
+    }
+
+    return (false);
+  }
 }
-
-$orm = new Model('players');
-
-$orm->select('id', 'name', 'te')->where('name = \'Maniarr\'')->fetch();
 //$orm->delete();
 //$orm->update(array('name' => 'test', 'email' => 'test@test.fr'));
 //$orm->insert(array('name' => 'test', 'email' => 'test@test.fr'));
