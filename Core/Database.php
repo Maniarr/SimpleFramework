@@ -9,9 +9,9 @@ class Database
     $credentials = array(
       'host'     => 'localhost',
       'port'     => 3306,
-      'dbname'   => 'simpleframework',
-      'username' => 'zoidberg',
-      'password' => 'password',
+      'dbname'   => 'chatv2',
+      'username' => 'root',
+      'password' => '',
     );
 
     $this->db = $this->connect($credentials);

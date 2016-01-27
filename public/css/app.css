@@ -1,0 +1,150 @@
+.chat .columns
+{
+  height: 600px;
+}
+
+.login
+{
+  padding: 10px;
+}
+
+.text-center
+{
+  text-align: center;
+}
+
+.error
+{
+  color: #ff0000;
+}
+
+button
+{
+  display: block;
+  margin: 10px auto;
+}
+
+.last-message
+{
+  padding-left: 20px;
+  font-style: italic;
+}
+
+.new_contact
+{
+  height: 10%;
+}
+
+.new_contact input
+{
+  margin: 0;
+  width: 80%;
+  display: inline-block;
+}
+
+.new_contact button
+{
+  display: inline-block;
+  padding: 9px 12px;
+}
+
+.contact-container
+{
+
+}
+
+.contact-container ul
+{
+  margin: 1% 0;
+  overflow-y: scroll;
+  height: 88%;
+}
+
+.contact
+{
+  border-bottom: 2px solid #e3e3e3;
+  padding: 1px 10px;
+}
+.active-contact
+{
+  background: #a5a5a5;
+}
+
+ul
+{
+  height: auto;
+  list-style-type: none;
+}
+
+.clear
+{
+  clear: both;
+}
+.text-right
+{
+  text-align: right;
+}
+
+textarea[rows]
+{
+  width: 82%;
+  height: 100%;
+  float: left;
+  resize: none;
+}
+
+#send-container button
+{
+  float: right;
+  margin: 0 auto;
+  height: 100%;
+}
+.login
+{
+      background: #f2f2f2;
+}
+
+.message-container
+{
+  height: 84%;
+  margin-top: 1%;
+  background: #fff;
+  overflow-y: scroll
+}
+.message
+{
+  background: #f2f2f2;
+  padding: 5px 5px;
+}
+.bg-lightgray
+{
+  background: #f9f9f9;
+}
+.message h5
+{
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 0;
+}
+.message p
+{
+  margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.send-container
+{
+  height: 15%;
+
+  padding: 1% 0;
+}
+@keyframes notif-animation
+{
+  from {background: #e3e3e3;}
+  to {background: #a5a5a5;}
+}
+
+.notif
+{
+  animation: notif-animation 1s linear infinite;
+}

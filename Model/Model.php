@@ -63,10 +63,14 @@ class Model
     {
       if (!empty($updates))
         $updates .= ', ';
-      $updates .= $key.' = \''.$value.'\'';
+
+      if ($value != 'NOW()')
+        $updates .= $key.' = \''.$value.'\'';
+      else
+         $updates .= $key.' = '.$value;
     }
 
-    $this->request = 'UPDATE '.$this->table_name.' SET ('.$updates.')';
+    $this->request = 'UPDATE '.$this->table_name.' SET '.$updates;
 
     return ($this);
   }
@@ -118,6 +122,23 @@ class Model
 
 
   /* RESULT ACTION */
+  /* A OPTIMISER */
+  public function execute()
+  {
+    try
+    {
+      $req = $this->db->prepare($this->request);
+      $req->execute();
+
+      return (true);    
+    }
+    catch (PDOException $e)
+    {
+      echo 'SQL Error : '.$e->getMessage();
+    }
+
+    return (false);
+  }
 
   public function fetch()
   {
@@ -126,7 +147,7 @@ class Model
     {
       $req = $this->db->prepare($this->request);
       $req->execute();
-      return ($req->fetch());
+      return ($req->fetch(PDO::FETCH_ASSOC));
     }
     catch (PDOException $e)
     {
@@ -143,7 +164,7 @@ class Model
     {
       $req = $this->db->prepare($this->request);
       $req->execute();
-      return ($req->fetchAll());
+      return ($req->fetchAll(PDO::FETCH_ASSOC));
     }
     catch (PDOException $e)
     {
