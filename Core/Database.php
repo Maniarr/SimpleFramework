@@ -1,5 +1,9 @@
 <?php
 
+namespace Core;
+
+use PDO;
+
 class Database
 {
   private $db;
@@ -9,9 +13,9 @@ class Database
     $credentials = array(
       'host'     => 'localhost',
       'port'     => 3306,
-      'dbname'   => 'chatv2',
-      'username' => 'root',
-      'password' => '',
+      'dbname'   => 'chatphp',
+      'username' => 'zoidberg',
+      'password' => 'password',
     );
 
     $this->db = $this->connect($credentials);

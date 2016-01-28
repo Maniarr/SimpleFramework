@@ -1,12 +1,16 @@
 <?php
 
+namespace Controller;
+
+use Core\View;
+
 class Controller
 {
   function model($name)
   {
-    $model_class = new ReflectionClass($name);
-    $model = $model_class->newInstanceArgs(array($name));
-
+    $class = '\Model\\'.$name;
+    $model = new $class($name);
+    
     return ($model);
   }
 

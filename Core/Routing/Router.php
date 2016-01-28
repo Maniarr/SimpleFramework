@@ -1,12 +1,8 @@
 <?php
 
-function	 __autoload($class)
-{
-  if (strpos($class, 'Controller'))
-    require_once(realpath('Controller'.DS.$class.'.php'));
-  else
-    require_once(realpath('Model'.DS.$class.'.php'));
-}
+namespace Core\Routing;
+
+use Core\Routing\Route;
 
 class Router
 {

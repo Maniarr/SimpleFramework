@@ -1,14 +1,14 @@
 <?php
 
+namespace Controller;
+
+use Controller\Controller;
+
 class PageController extends Controller
 {
-  function index()
-  {
-    $this->view('index');
-  }
-
-  function route_404()
-  {
-    $this->redirect('/');
-  }
+	public function index()
+	{
+		$test = $this->model('Message');
+		$this->view('index');
+	}
 }

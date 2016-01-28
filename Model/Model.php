@@ -1,5 +1,10 @@
 <?php
 
+namespace Model;
+
+use PDO;
+use Core\Database;
+
 class Model
 {
   public $request;
@@ -174,6 +179,3 @@ class Model
     return (false);
   }
 }
-//$orm->delete();
-//$orm->update(array('name' => 'test', 'email' => 'test@test.fr'));
-//$orm->insert(array('name' => 'test', 'email' => 'test@test.fr'));

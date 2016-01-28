@@ -1,13 +1,15 @@
 <?php
 
+namespace Core;
+
 class View
 {
   public $path;
   public $data;
 
-  function View($name)
+  function __construct($name)
   {
-      $this->path = BASE_PATH.'View'.DIRECTORY_SEPARATOR.$name.'.php';
+      $this->path = BASE_PATH.'View'.DS.$name.'.php';
   }
 
   function render($data = array())

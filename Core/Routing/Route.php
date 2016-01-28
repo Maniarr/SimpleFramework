@@ -1,15 +1,16 @@
 <?php
 
+namespace Core\Routing;
+
 class Route
 {
-  public 	  $url;
-  private 	$class;
-  private 	$method;
+  public 	    $url;
+  protected  	$class;
+  protected 	$method;
 
-  function 	Route($url, $function)
+  function 	__construct($url, $function)
   {
     $tmp = explode('::', $function);
-
     $this->url = $url;
     $this->class = $tmp[0];
     $this->method = $tmp[1];
@@ -51,7 +52,7 @@ class Route
     for ($i = 0; $i < count($original); $i++)
     {
       if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
-	array_push($response, $tmp[$i]);
+	       array_push($response, $tmp[$i]);
     }
 
     return ($response);
@@ -59,8 +60,9 @@ class Route
 
   function 	call($url)
   {
-    $class = new ReflectionClass($this->class);
-    $object = $class->newInstanceArgs();
+  
+    $class = '\Controller\\'.$this->class;
+    $object = new $class();
     call_user_func_array(array($object, $this->method), $this->get_params($url));
   }
 }
