@@ -21,25 +21,24 @@ class Route
     $url = explode('?', $url)[0];
     $original = explode('/', $this->url);
     
-    if (strlen($url) > 1 && $url[strlen($url) - 1] == '/')
+    if (strlen($url) > 1 && $url[strlen($url) - 1] === '/')
         $url = substr($url, 0, -1);
     $tmp = explode('/', $url);
 
     for ($i = 0; $i < count($original); $i++)
-    {
-      if (isset($original[$i]) && isset($tmp[$i]) && ($original[$i] != $tmp[$i]))
+    { 
+      if (isset($original[$i]) && isset($tmp[$i]))
       {
-    	if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
-    	{
-    	  if ($tmp[$i] == false)
-    	    return (0);
-    	}
-    	else
-    	  return (0);
+
+        if ('' === $original[1] && '' === $tmp[1] && count($original) == count($tmp))
+          return (1);
+        else
+        {
+          if (!preg_match('/^'.$original[$i].'$/', $tmp[$i])) 
+            return (0); 
+        }
       }
     }
-    if (count($tmp) != count($original))
-      return (0);
     return (1);
   }
 
@@ -51,7 +50,7 @@ class Route
 
     for ($i = 0; $i < count($original); $i++)
     {
-      if (preg_match('/^{[a-zA-z]+}$/', $original[$i]))
+      if (preg_match('/^[(][^\/]+[)]$/', $original[$i]))
 	       array_push($response, $tmp[$i]);
     }
 

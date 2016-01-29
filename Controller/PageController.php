@@ -6,9 +6,13 @@ use Controller\Controller;
 
 class PageController extends Controller
 {
-	public function index()
+	public function index($hello)
 	{
-		$test = $this->model('Message');
-		$this->view('index');
+		echo 'index function : '.$hello;
+	}
+
+	public function error_404()
+	{
+		echo '404 error';
 	}
 }

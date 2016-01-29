@@ -9,7 +9,7 @@ use Core\Routing\Router;
 
 $router = new Router();
 
-$router->get('/', 'PageController::index');
-$router->add_404('PageController::index');
+$router->get('/home/([0-9]{2})', 'PageController::index');
+$router->add_404('PageController::error_404');
 
 $router->run();
