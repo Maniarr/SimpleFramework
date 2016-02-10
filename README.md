@@ -106,3 +106,97 @@ Fonctions disponibles dans la vue :
 ```
 
 ##Model
+
+Le model est la partie qui fait la relation entre un controller et la base de données.
+Un model est associé à une table, pour cela le nom de votre table doit être celui de votre model en minuscule.
+
+Exemple :
+Model => Message : Table => message
+
+Code de base d'un model :
+```
+<?php
+
+namespace Model;
+
+use Model\Model;
+
+class Message extends Model
+{
+	...
+}
+
+?>
+```
+
+Vous pouvez ajouter des fonctions dans le model pour recupérer/créer des informations dans la base de données.
+
+Model/Exemple.php
+```
+	public function get_message()
+	{
+		// Créer la requête SQL : SELECT * FROM message
+		$this->select('*'); 
+
+		// Créer la requête SQL : SELECT * FROM message
+		$this->request = 'SELECT * FROM message';
+
+		// Retourne tous les résultats correspondant à la requête
+		return ($this->fetchAll());
+	}
+```
+
+Controller/ExempleController.php :
+```
+<?php
+
+namespace Controller;
+
+use Controller\Controller;
+
+class ExempleController extends Controller
+{
+	public function index()
+	{
+		// Initialisation du model 'Model/Exemple.php'
+		$message_model = $this->model('Exemple');
+
+		// Appelle de la méthode 'get_message' du model
+		$messages = $message_model->get_message();
+	}
+}
+ 
+?>
+```
+
+Fontions disponibles pour créer une requête :
+
+select($field, ...) => SELECT $field, ... FROM table
+
+insert(array('field' => $value)) => INSERT INTO table (field) VALUES ($value)
+
+update(array('field' => $value)) => UPDATE table SET field = $value
+
+delete() => DELETE FROM table
+
+limit($number) => LIMIT $number
+
+order_by($order) => ORDER BY $order
+
+where($condition) => WHERE $condition
+
+and_where($condition) => AND $condition
+
+or_where($condition) => OR $condition
+
+execute() => Execute la requête
+
+fetch() => Récupère le premier résultat
+
+fetchAll() => Récupère tous les résultats
+
+Exemple :
+```
+	// Retourne les résultats de la requête : SELECT id, name WHERE id = 5
+	return ($this->select('id', 'name')->where('id = 5')->fetchAll());
+```
