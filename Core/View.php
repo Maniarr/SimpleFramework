@@ -32,6 +32,6 @@ class View
   }
 
   function asset($url) {
-    echo URL.'public/'.$url;
+    echo URL.'/public/'.$url;
   }
 }

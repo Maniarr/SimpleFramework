@@ -6,9 +6,9 @@ use Controller\Controller;
 
 class PageController extends Controller
 {
-	public function index($hello)
+	public function index()
 	{
-		echo 'index function : '.$hello;
+		echo 'Hello world ';
 	}
 
 	public function error_404()
