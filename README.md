@@ -1,8 +1,6 @@
 #SimpleFramework
 
-[TOC]
-
-> ##Router
+##Router
 Le router est la pièce maitresse du framework et va permettre d'associer des urls à une méthode d'un controller.
 
 Il est possible de d'utiliser des regex dans les urls, si celle-ci ne contient pas de parenthèses.
@@ -37,8 +35,7 @@ $router->run();
 ?>
 ```
 
-> ##Controller
-
+##Controller
 Les controllers par conventions se termine par 'Controller'.
 Leurs namespaces doivent correspondre à leurs chemins d'accès en partant du dossier du framework.
 
@@ -72,7 +69,7 @@ class PageController extends Controller
 ?>
 ```
 
-> ##View
+##View
 
 Les vues sont la partie visible pour le visiteur. Elles doivent être dans le dossier 'View'.
 Vous pouvez faire passer des variables du controller à la vue, celles-ci doivent être contenues dans un tableau.
@@ -108,4 +105,4 @@ Fonctions disponibles dans la vue :
 	?>
 ```
 
-> ##Model
+##Model
