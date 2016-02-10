@@ -170,30 +170,32 @@ class ExempleController extends Controller
 ```
 
 Fontions disponibles pour créer une requête :
+```
 
-select($field, ...) => SELECT $field, ... FROM table
+select($field, ...) 				=> SELECT $field, ... FROM table
 
-insert(array('field' => $value)) => INSERT INTO table (field) VALUES ($value)
+insert(array('field' => $value))	=> INSERT INTO table (field) VALUES ($value)
 
-update(array('field' => $value)) => UPDATE table SET field = $value
+update(array('field' => $value))	=> UPDATE table SET field = $value
 
-delete() => DELETE FROM table
+delete() 							=> DELETE FROM table
 
-limit($number) => LIMIT $number
+limit($number) 						=> LIMIT $number
 
-order_by($order) => ORDER BY $order
+order_by($order) 					=> ORDER BY $order
 
-where($condition) => WHERE $condition
+where($condition) 					=> WHERE $condition
 
-and_where($condition) => AND $condition
+and_where($condition) 				=> AND $condition
 
-or_where($condition) => OR $condition
+or_where($condition)				=> OR $condition
 
-execute() => Execute la requête
+execute() 							=> Execute la requête
 
-fetch() => Récupère le premier résultat
+fetch() 							=> Récupère le premier résultat
 
-fetchAll() => Récupère tous les résultats
+fetchAll() 							=> Récupère tous les résultats
+```
 
 Exemple :
 ```
