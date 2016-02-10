@@ -113,8 +113,19 @@ Un model est associé à une table, pour cela le nom de votre table doit être c
 Exemple :
 Model => Message : Table => message
 
-Code de base d'un model :
+Configuration base de données :
+Core/Database.php :
 ```
+	$credentials = array(
+      'host'     => 'localhost',
+      'port'     => 3306,
+      'dbname'   => 'chatphp',
+      'username' => 'zoidberg',
+      'password' => 'password',
+    );
+```
+Code de base d'un model :
+
 <?php
 
 namespace Model;
